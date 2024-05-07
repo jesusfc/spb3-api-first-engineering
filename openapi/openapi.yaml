@@ -1,0 +1,37 @@
+openapi: 3.0.3
+info:
+  title: Spring Boot 3 - Api First Engineering
+  description: Best Practices to Develop First Class APIs
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:8080/api
+    description: Localhost server
+
+paths:
+  /example:
+    get:
+      summary: Get example data
+      description: Retrieve example data from the server.
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
