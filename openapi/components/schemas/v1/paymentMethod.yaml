@@ -1,0 +1,30 @@
+type: object
+properties:
+  id:
+    type: string
+    format: uuid
+    description: Unique identifier of the object.
+    example: 00000000-0000-000
+    readOnly: true
+  displayName:
+    type: string
+    description: Display name of the card.
+    example: John Name
+    readOnly: true
+  cardNumber:
+    type: string
+    description: Card number.
+    example: 4111111111111111
+    readOnly: true
+  expiryDate:
+    type: string
+    description: Expiry date.
+    example: 2020-01-01
+    readOnly: true
+  cvvSecret:
+    type: string
+    description: CVV secret.
+    example: 123
+    readOnly: true
+
+

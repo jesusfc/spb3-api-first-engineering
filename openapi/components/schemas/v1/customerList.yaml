@@ -1,0 +1,4 @@
+type: object
+items:
+  type: array
+  $ref: customer.yaml

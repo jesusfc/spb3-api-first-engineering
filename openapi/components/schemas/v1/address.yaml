@@ -1,0 +1,28 @@
+type: object
+properties:
+  id:
+    type: string
+    format: uuid
+    description: Unique identifier for the object.
+    readOnly: true
+    example: 00000000-0000-000
+  addressLine1:
+    type: string
+    description: Address line 1.
+    example: 123 Main St.
+  addressLine2:
+    type: string
+    description: Address line 2.
+    example: Suite 100
+  city:
+    type: string
+    description: City.
+    example: San Francisco
+  country:
+    type: string
+    description: Country.
+    example: United States
+  postalCode:
+    type: string
+    description: Postal code.
+    example: 94107

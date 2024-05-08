@@ -1,0 +1,25 @@
+type: object
+properties:
+  id:
+    type: string
+    format: uuid
+    description: Unique identifier of the name
+    example: 00000000-0000-000
+    readOnly: true
+    minLength: 36
+    maxLength: 36
+  name:
+    $ref: name.yaml
+  shipToAddress:
+    $ref: address.yaml
+  billingAddress:
+    $ref: address.yaml
+  email:
+    type: String
+    format: email
+    description: Email address of the customer
+    example: customer@mycompany.com
+  paymentMethods:
+    type: array
+    items:
+      $ref: paymentMethod.yaml
