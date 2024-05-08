@@ -12,10 +12,8 @@ info:
   x-logo:
     url: https://redocly.github.io/openapi-template/logo.png
   description: Best Practices to Develop First Class APIs
-
 security:
-  - batch_auth: []
-
+  - batch_auth: [ ]
 tags:
   - name: Customer
     description: Customer related endpoints
@@ -23,17 +21,24 @@ tags:
     description: User related endpoints
   - name: Products
     description: Product operations
-
 servers:
   - url: http://localhost:8080/api
     description: Localhost server
-
 paths:
   /v1/customers:
     $ref: paths/v1/customers.yaml
   /v1/customers/{customer_id}:
     $ref: paths/v1/customers_{customer_id}.yaml
-
+  /v1/products:
+    $ref: paths/v1/products.yaml
+  /v1/products/{productId}:
+    $ref: paths/v1/products_{productId}.yaml
+  /v1/orders:
+    $ref: paths/v1/orders.yaml
+  /v1/orders/{orderId}:
+    $ref: paths/v1/orders_{orderId}.yaml
+  /v1/categories:
+    $ref: paths/v1/categories.yaml
 components:
   securitySchemes:
     main_auth:
