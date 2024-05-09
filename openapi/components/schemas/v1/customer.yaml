@@ -19,7 +19,6 @@ properties:
     format: email
     description: Email address of the customer
     example: customer@mycompany.com
-    nullable: false
   paymentMethods:
     type: array
     items:
