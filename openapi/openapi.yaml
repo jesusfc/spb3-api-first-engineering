@@ -12,8 +12,6 @@ info:
   x-logo:
     url: https://redocly.github.io/openapi-template/logo.png
   description: Best Practices to Develop First Class APIs
-security:
-  - batch_auth: [ ]
 tags:
   - name: Customer
     description: Customer related endpoints
@@ -39,13 +37,15 @@ paths:
     $ref: paths/v1/orders_orderId.yaml
   /v1/categories:
     $ref: paths/v1/categories.yaml
+security:
+  - batch_auth: [ ]
 components:
   securitySchemes:
     main_auth:
       type: oauth2
       flows:
         implicit:
-          authorizationUrl: https://example.com/api/oauth/dialog
+          authorizationUrl: http://example.com/api/oauth/dialog
           scopes:
             read:users: read users info
             write:users: modify or remove users
