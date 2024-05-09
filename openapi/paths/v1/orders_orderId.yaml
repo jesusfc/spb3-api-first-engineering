@@ -5,7 +5,7 @@ get:
   description: Get Order by id
   operationId: getOrderById
   parameters:
-    - $ref: ../../components/parameters/order_id.yaml
+    - $ref: ../../components/parameters/orderId.yaml
   responses:
     '200':
       description: successful operation
@@ -24,7 +24,7 @@ put:
   description: Update Order
   operationId: updateOrder
   parameters:
-    - $ref: ../../components/parameters/order_id.yaml
+    - $ref: ../../components/parameters/orderId.yaml
   requestBody:
     content:
       application/json:
@@ -48,7 +48,7 @@ patch:
   description: Patch Order
   operationId: patchOrder
   parameters:
-    - $ref: ../../components/parameters/order_id.yaml
+    - $ref: ../../components/parameters/orderId.yaml
   requestBody:
     content:
       application/json:
@@ -73,7 +73,7 @@ delete:
     Patch a order by ID
   operationId: deleteOrderById
   parameters:
-    - $ref: ../../components/parameters/order_id.yaml
+    - $ref: ../../components/parameters/orderId.yaml
   responses:
     '204':
       description: No Content
