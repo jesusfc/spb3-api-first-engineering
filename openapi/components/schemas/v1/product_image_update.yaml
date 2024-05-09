@@ -4,7 +4,6 @@ properties:
     type: string
     format: uuid
     description: The unique identifier of the image
-    nullable: true
   url:
     type: string
     format: url
@@ -14,7 +13,6 @@ properties:
     example: https://springframework.guru/wp-content/uploads/2019/08/spring-framework-guru-logo.jpg
   altText:
     type: string
-    nullable: true
     minLength: 3
     maxLength: 255
 required:

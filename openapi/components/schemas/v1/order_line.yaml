@@ -16,7 +16,6 @@ properties:
     minimum: 1
     maximum: 10000
     example: 2
-    nullable: true
   dateCreated:
     $ref: ../common/iso_timestamp.yaml
   dateUpdated:

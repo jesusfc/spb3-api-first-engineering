@@ -6,19 +6,16 @@ properties:
     minimum: 1
     maximum: 999
     example: 10
-    nullable: true
   width:
     type: integer
     description: The width of the product
     minimum: 1
     maximum: 999
     example: 10
-    nullable: true
   height:
     type: integer
     description: The height of the product
     minimum: 1
     maximum: 999
     example: 10
-    nullable: true
 description: The dimensions of the product
