@@ -9,3 +9,14 @@ properties:
     type: string
     description: The first name of the customer
     example: Kylian
+    minLength: 1
+    maxLength: 50
+  lastName:
+    type: string
+    description: The last name of the customer
+    example: Mbappe
+    minLength: 1
+    maxLength: 50
+required:
+  - firstName
+  - lastName

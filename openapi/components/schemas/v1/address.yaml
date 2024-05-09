@@ -10,14 +10,20 @@ properties:
     type: string
     description: Address line 1.
     example: 123 Main St.
+    minLength: 1
+    maxLength: 255
   addressLine2:
     type: string
     description: Address line 2.
     example: Suite 100
+    minLength: 1
+    maxLength: 255
   city:
     type: string
     description: City.
     example: San Francisco
+    minLength: 1
+    maxLength: 255
   country:
     type: string
     description: Country.
@@ -26,3 +32,9 @@ properties:
     type: string
     description: Postal code.
     example: 94107
+    minLength: 1
+    maxLength: 5
+required:
+  - addressLine1
+  - city
+  - country

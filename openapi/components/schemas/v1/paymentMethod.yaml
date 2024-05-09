@@ -26,5 +26,9 @@ properties:
     description: CVV secret.
     example: 123
     readOnly: true
-
+required:
+  - displayName
+  - cardNumber
+  - expiryDate
+  - cvvSecret
 
