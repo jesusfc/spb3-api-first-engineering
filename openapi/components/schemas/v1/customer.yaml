@@ -19,6 +19,8 @@ properties:
     format: email
     description: Email address of the customer
     example: customer@mycompany.com
+    minLength: 1
+    maxLength: 254
   paymentMethods:
     type: array
     items:
