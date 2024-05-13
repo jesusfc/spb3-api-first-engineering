@@ -40,3 +40,6 @@ qodana.yaml
 /node_modules/
 /package-lock.json
 /yarn.lock
+
+/api-first-server/target/
+/api-first-spec/target/
