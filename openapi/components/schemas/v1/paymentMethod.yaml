@@ -26,6 +26,10 @@ properties:
     description: CVV secret.
     example: 123
     readOnly: true
+  dateCreated:
+    $ref: ../common/iso_timestamp.yaml
+  dateUpdated:
+    $ref: ../common/iso_timestamp.yaml
 required:
   - displayName
   - cardNumber

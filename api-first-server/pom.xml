@@ -20,7 +20,7 @@
         <dependency>
             <groupId>com.jesusfc</groupId>
             <artifactId>api-first-spec</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>${project.version}</version>
         </dependency>
 
         <dependency>
@@ -45,12 +45,50 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Spring Data JPA con Hibernate como proveedor -->
         <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-commons</artifactId>
+        </dependency>
+
+        <!-- Para utilizar JPA las entidades generadas deben tener @Entity las cuales NO tienen -->
+        <!-- Spring Data JPA con Hibernate como proveedor -->
+        <!--dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency-->
+
+        <!-- Hibernate Validator Engine Relocation Artifact -->
+        <!--dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>8.0.0.Final</version>
+        </dependency-->
+
+        <!-- H2 Database -->
+        <!-- http://www.h2database.com/html/main.html -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
         </dependency>
 
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
