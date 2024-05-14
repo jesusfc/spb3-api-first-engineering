@@ -2,15 +2,12 @@ package com.jesusfc.database.repository;
 
 import com.jesusfc.model.Address;
 import com.jesusfc.model.Customer;
-import com.jesusfc.model.PaymentMethod;
 import org.springframework.stereotype.Repository;
 
-import java.time.OffsetDateTime;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 /**
  * Author Jesús Fdez. Caraballo
