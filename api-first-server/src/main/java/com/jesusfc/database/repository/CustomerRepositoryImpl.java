@@ -1,12 +1,16 @@
 package com.jesusfc.database.repository;
 
+import com.jesusfc.model.Address;
 import com.jesusfc.model.Customer;
+import com.jesusfc.model.PaymentMethod;
 import org.springframework.stereotype.Repository;
 
+import java.time.OffsetDateTime;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 /**
  * Author Jesús Fdez. Caraballo
@@ -23,33 +27,31 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
         UUID id = UUID.randomUUID();
         Customer customer = new Customer();
-/*
-        customer.set
 
-        if (entity.getBillToAddress() != null){
-            builder1.billToAddress(Address.builder()
-                    .id(UUID.randomUUID())
-                    .addressLine1(entity.getBillToAddress().getAddressLine1())
-                    .addressLine2(entity.getBillToAddress().getAddressLine2())
-                    .city(entity.getBillToAddress().getCity())
-                    .state(entity.getBillToAddress().getState())
-                    .zip(entity.getBillToAddress().getZip())
-                    .build());
-        }
+        customer.setId(id);
 
-        if (entity.getShipToAddress() != null) {
-            builder1.shipToAddress(Address.builder()
-                    .id(UUID.randomUUID())
-                    .addressLine1(entity.getShipToAddress().getAddressLine1())
-                    .addressLine2(entity.getShipToAddress().getAddressLine2())
-                    .city(entity.getShipToAddress().getCity())
-                    .state(entity.getShipToAddress().getState())
-                    .zip(entity.getShipToAddress().getZip())
-                    .build());
-        }
+        Address address = new Address();
+        address.setId(UUID.randomUUID());
+        address.setAddressLine1(entity.getBillingAddress().getAddressLine1());
+        address.setAddressLine2(entity.getBillingAddress().getAddressLine2());
+        address.setCity(entity.getBillingAddress().getCity());
+        address.setCountry(entity.getBillingAddress().getCountry());
+        address.setPostalCode(entity.getBillingAddress().getPostalCode());
+        customer.setBillingAddress(address);
 
-        if (entity.getPaymentMethods() != null) {
-            builder1.paymentMethods(entity.getPaymentMethods()
+        Address shipToAddress = new Address();
+        shipToAddress.setId(UUID.randomUUID());
+        shipToAddress.setAddressLine1(entity.getShipToAddress().getAddressLine1());
+        shipToAddress.setAddressLine2(entity.getShipToAddress().getAddressLine2());
+        shipToAddress.setCity(entity.getShipToAddress().getCity());
+        shipToAddress.setCountry(entity.getShipToAddress().getCountry());
+        shipToAddress.setPostalCode(entity.getShipToAddress().getPostalCode());
+        customer.setShipToAddress(shipToAddress);
+
+        /*
+        if (entity.getPaymentMethods()) {
+            PaymentMethod paymentMethod = new PaymentMethod();
+            paymentMethod.paymentMethods(entity.getPaymentMethods()
                     .stream()
                     .map(paymentMethod -> PaymentMethod.builder()
                             .id(UUID.randomUUID())
@@ -58,6 +60,8 @@ public class CustomerRepositoryImpl implements CustomerRepository {
                             .expiryYear(paymentMethod.getExpiryYear())
                             .build())
                     .collect(Collectors.toList()));
+
+            customer.setPaymentMethod(paymentMethod);
         }
 
         Customer customer = builder1.email(entity.getEmail())

@@ -4,7 +4,6 @@ properties:
     type: string
     format: uuid
     description: Unique identifier for the object.
-    readOnly: true
     example: 00000000-0000-000
   addressLine1:
     type: string
