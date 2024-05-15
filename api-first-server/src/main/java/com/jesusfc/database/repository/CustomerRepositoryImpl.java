@@ -3,6 +3,7 @@ package com.jesusfc.database.repository;
 import com.jesusfc.model.Address;
 import com.jesusfc.model.Customer;
 import org.springframework.stereotype.Repository;
+import org.springframework.util.CollectionUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -45,8 +46,9 @@ public class CustomerRepositoryImpl implements CustomerRepository {
         shipToAddress.setPostalCode(entity.getShipToAddress().getPostalCode());
         customer.setShipToAddress(shipToAddress);
 
-        /*
-        if (entity.getPaymentMethods()) {
+
+        if (!CollectionUtils.isEmpty(entity.getPaymentMethods())) {
+            /*
             PaymentMethod paymentMethod = new PaymentMethod();
             paymentMethod.paymentMethods(entity.getPaymentMethods()
                     .stream()
@@ -59,17 +61,14 @@ public class CustomerRepositoryImpl implements CustomerRepository {
                     .collect(Collectors.toList()));
 
             customer.setPaymentMethod(paymentMethod);
+            */
         }
 
-        Customer customer = builder1.email(entity.getEmail())
-                .name(entity.getName())
-                .phone(entity.getPhone())
-                .dateCreated(OffsetDateTime.now())
-                .dateUpdated(OffsetDateTime.now())
-                .build();
-*/
-        entityMap.put(id, customer);
+        customer.setEmail(entity.getEmail());
+        customer.setName(entity.getName());
+        //customer.setPhoneNumber(entity.getPhoneNumber());
 
+        entityMap.put(id, customer);
         return (S) customer;
     }
 
@@ -80,17 +79,17 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
     @Override
     public Optional<Customer> findById(UUID uuid) {
-        return Optional.empty();
+        return Optional.of(entityMap.get(uuid));
     }
 
     @Override
     public boolean existsById(UUID uuid) {
-        return false;
+        return findById(uuid).isPresent();
     }
 
     @Override
     public Iterable<Customer> findAll() {
-        return null;
+        return entityMap.values();
     }
 
     @Override
@@ -105,7 +104,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
     @Override
     public void deleteById(UUID uuid) {
-
+        if (existsById(uuid)) entityMap.remove(uuid);
     }
 
     @Override
