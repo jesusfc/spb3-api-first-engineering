@@ -2,6 +2,7 @@ package com.jesusfc.database.repository;
 
 import com.jesusfc.model.Address;
 import com.jesusfc.model.Customer;
+import com.jesusfc.model.Name;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.CollectionUtils;
 
@@ -29,7 +30,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
         customer.setId(id);
 
         Address address = new Address();
-        address.setId(UUID.randomUUID());
+        address.setId(id);
         address.setAddressLine1(entity.getBillingAddress().getAddressLine1());
         address.setAddressLine2(entity.getBillingAddress().getAddressLine2());
         address.setCity(entity.getBillingAddress().getCity());
@@ -38,7 +39,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
         customer.setBillingAddress(address);
 
         Address shipToAddress = new Address();
-        shipToAddress.setId(UUID.randomUUID());
+        shipToAddress.setId(id);
         shipToAddress.setAddressLine1(entity.getShipToAddress().getAddressLine1());
         shipToAddress.setAddressLine2(entity.getShipToAddress().getAddressLine2());
         shipToAddress.setCity(entity.getShipToAddress().getCity());
@@ -65,8 +66,10 @@ public class CustomerRepositoryImpl implements CustomerRepository {
         }
 
         customer.setEmail(entity.getEmail());
-        customer.setName(entity.getName());
-        //customer.setPhoneNumber(entity.getPhoneNumber());
+        customer.setPhoneNumber(entity.getPhoneNumber());
+        Name name = entity.getName();
+        name.setId(id);
+        customer.setName(name);
 
         entityMap.put(id, customer);
         return (S) customer;
