@@ -20,7 +20,7 @@ tags:
   - name: Products
     description: Product operations
 servers:
-  - url: http://localhost:8080/api
+  - url: http://localhost:8080
     description: Localhost server
 paths:
   /v1/customers:

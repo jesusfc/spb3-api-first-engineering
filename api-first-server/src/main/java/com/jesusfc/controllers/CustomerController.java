@@ -25,7 +25,7 @@ public class CustomerController {
 
     private final CustomerService customerService;
 
-    @GetMapping("/list")
+    @GetMapping("")
     public ResponseEntity<List<Customer>> listCustomers(){
         return ResponseEntity.ok(customerService.listCustomers());
     }

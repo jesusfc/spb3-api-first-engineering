@@ -40,6 +40,20 @@ public class DataLoader implements CommandLineRunner {
 
         customerRepository.save(customer);
 
+        Customer customer2 = new Customer();
+        Name customerName2 = new Name();
+        customerName2.setFirstName("Abel");
+        customerName2.setLastName("Vives");
+        customer2.setName(customerName2);
+        customer2.setEmail("jfcaraballo@gmail.com");
+        customer2.setPhoneNumber("+34 600 852 123");
+
+        Address address2 = new Address();
+        customer2.setBillingAddress(address2);
+        customer2.setShipToAddress(address2);
+
+        customerRepository.save(customer2);
+
         for (Customer customer1 : customerRepository.findAll()) {
             log.info(String.valueOf(customer1));
         }
