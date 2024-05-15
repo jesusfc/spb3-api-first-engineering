@@ -5,11 +5,6 @@ properties:
     format: uuid
     description: Unique identifier for the object.
     example: 00000000-0000-000
-  phoneNumber:
-    type: string
-    description: Phone number.
-    example: 555-555-5555
-    minLength: 1
   addressLine1:
     type: string
     description: Address line 1.

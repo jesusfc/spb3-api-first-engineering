@@ -20,6 +20,11 @@ properties:
     example: customer@mycompany.com
     minLength: 1
     maxLength: 254
+  phoneNumber:
+    type: string
+    description: Phone number.
+    example: 555-555-5555
+    minLength: 1
   paymentMethods:
     type: array
     items:
