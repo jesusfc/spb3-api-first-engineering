@@ -20,8 +20,10 @@ import java.util.UUID;
  */
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/v1/customers")
+@RequestMapping(CustomerController.BASE_URL)
 public class CustomerController {
+
+    public static final String BASE_URL = "/v1/customers";
 
     private final CustomerService customerService;
 

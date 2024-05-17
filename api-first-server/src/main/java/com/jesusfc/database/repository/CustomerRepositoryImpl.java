@@ -102,7 +102,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
     @Override
     public long count() {
-        return 0;
+        return entityMap.size();
     }
 
     @Override
