@@ -1,8 +1,6 @@
 package com.jesusfc.controllers;
 
 import com.jesusfc.database.repository.CustomerRepository;
-import com.jesusfc.database.repository.CustomerRepositoryImpl;
-import com.jesusfc.model.Customer;
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

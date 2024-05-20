@@ -1,6 +1,6 @@
 package com.jesusfc.services;
 
-import com.jesusfc.model.Customer;
+import com.jesusfc.model.CustomerDto;
 
 import java.util.List;
 import java.util.UUID;
@@ -12,8 +12,8 @@ import java.util.UUID;
  */
 public interface CustomerService {
 
-    List<Customer> listCustomers();
+    List<CustomerDto> listCustomers();
 
-    Customer getCustomerById(UUID customerId);
+    CustomerDto getCustomerById(UUID customerId);
 
 }

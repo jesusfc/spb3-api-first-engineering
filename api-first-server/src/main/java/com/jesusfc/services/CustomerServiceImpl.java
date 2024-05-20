@@ -1,7 +1,7 @@
 package com.jesusfc.services;
 
 import com.jesusfc.database.repository.CustomerRepository;
-import com.jesusfc.model.Customer;
+import com.jesusfc.model.CustomerDto;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -21,13 +21,13 @@ public class CustomerServiceImpl implements CustomerService {
     private final CustomerRepository customerRepository;
 
     @Override
-    public List<Customer> listCustomers() {
+    public List<CustomerDto> listCustomers() {
         return StreamSupport.stream(customerRepository.findAll().spliterator(), false)
                 .toList();
     }
 
     @Override
-    public Customer getCustomerById(UUID customerId) {
+    public CustomerDto getCustomerById(UUID customerId) {
         return customerRepository.findById(customerId).orElseThrow();
     }
 }

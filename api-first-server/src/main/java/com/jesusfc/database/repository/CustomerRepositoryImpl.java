@@ -1,8 +1,8 @@
 package com.jesusfc.database.repository;
 
-import com.jesusfc.model.Address;
-import com.jesusfc.model.Customer;
-import com.jesusfc.model.Name;
+import com.jesusfc.model.AddressDto;
+import com.jesusfc.model.CustomerDto;
+import com.jesusfc.model.NameDto;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.CollectionUtils;
 
@@ -19,33 +19,33 @@ import java.util.UUID;
 @Repository
 public class CustomerRepositoryImpl implements CustomerRepository {
 
-    private final Map<UUID, Customer> entityMap = new HashMap<>();
+    private final Map<UUID, CustomerDto> entityMap = new HashMap<>();
 
     @Override
-    public <S extends Customer> S save(S entity) {
+    public <S extends CustomerDto> S save(S entity) {
 
         UUID id = UUID.randomUUID();
-        Customer customer = new Customer();
+        CustomerDto CustomerDto = new CustomerDto();
 
-        customer.setId(id);
+        CustomerDto.setId(id);
 
-        Address address = new Address();
+        AddressDto address = new AddressDto();
         address.setId(id);
         address.setAddressLine1(entity.getBillingAddress().getAddressLine1());
         address.setAddressLine2(entity.getBillingAddress().getAddressLine2());
         address.setCity(entity.getBillingAddress().getCity());
         address.setCountry(entity.getBillingAddress().getCountry());
         address.setPostalCode(entity.getBillingAddress().getPostalCode());
-        customer.setBillingAddress(address);
+        CustomerDto.setBillingAddress(address);
 
-        Address shipToAddress = new Address();
+        AddressDto shipToAddress = new AddressDto();
         shipToAddress.setId(id);
         shipToAddress.setAddressLine1(entity.getShipToAddress().getAddressLine1());
         shipToAddress.setAddressLine2(entity.getShipToAddress().getAddressLine2());
         shipToAddress.setCity(entity.getShipToAddress().getCity());
         shipToAddress.setCountry(entity.getShipToAddress().getCountry());
         shipToAddress.setPostalCode(entity.getShipToAddress().getPostalCode());
-        customer.setShipToAddress(shipToAddress);
+        CustomerDto.setShipToAddress(shipToAddress);
 
 
         if (!CollectionUtils.isEmpty(entity.getPaymentMethods())) {
@@ -61,27 +61,27 @@ public class CustomerRepositoryImpl implements CustomerRepository {
                             .build())
                     .collect(Collectors.toList()));
 
-            customer.setPaymentMethod(paymentMethod);
+            CustomerDto.setPaymentMethod(paymentMethod);
             */
         }
 
-        customer.setEmail(entity.getEmail());
-        customer.setPhoneNumber(entity.getPhoneNumber());
-        Name name = entity.getName();
+        CustomerDto.setEmail(entity.getEmail());
+        CustomerDto.setPhoneNumber(entity.getPhoneNumber());
+        NameDto name = entity.getName();
         name.setId(id);
-        customer.setName(name);
+        CustomerDto.setName(name);
 
-        entityMap.put(id, customer);
-        return (S) customer;
+        entityMap.put(id, CustomerDto);
+        return (S) CustomerDto;
     }
 
     @Override
-    public <S extends Customer> Iterable<S> saveAll(Iterable<S> entities) {
+    public <S extends CustomerDto> Iterable<S> saveAll(Iterable<S> entities) {
         return null;
     }
 
     @Override
-    public Optional<Customer> findById(UUID uuid) {
+    public Optional<CustomerDto> findById(UUID uuid) {
         return Optional.of(entityMap.get(uuid));
     }
 
@@ -91,12 +91,12 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     }
 
     @Override
-    public Iterable<Customer> findAll() {
+    public Iterable<CustomerDto> findAll() {
         return entityMap.values();
     }
 
     @Override
-    public Iterable<Customer> findAllById(Iterable<UUID> uuids) {
+    public Iterable<CustomerDto> findAllById(Iterable<UUID> uuids) {
         return null;
     }
 
@@ -111,7 +111,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     }
 
     @Override
-    public void delete(Customer entity) {
+    public void delete(CustomerDto entity) {
 
     }
 
@@ -121,7 +121,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     }
 
     @Override
-    public void deleteAll(Iterable<? extends Customer> entities) {
+    public void deleteAll(Iterable<? extends CustomerDto> entities) {
 
     }
 

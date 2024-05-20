@@ -45,9 +45,21 @@
             <scope>test</scope>
         </dependency>
 
-        <dependency>
+        <!-- Comentamos data-commons para añadir JPA y h2 -->
+        <!--dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-commons</artifactId>
+        </dependency-->
+
+        <!-- Comentamos JPA y h2 para usar data-commons -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
         </dependency>
 
     </dependencies>

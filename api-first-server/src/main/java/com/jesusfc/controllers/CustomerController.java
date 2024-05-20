@@ -1,6 +1,6 @@
 package com.jesusfc.controllers;
 
-import com.jesusfc.model.Customer;
+import com.jesusfc.model.CustomerDto;
 import com.jesusfc.services.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -28,12 +28,12 @@ public class CustomerController {
     private final CustomerService customerService;
 
     @GetMapping("")
-    public ResponseEntity<List<Customer>> listCustomers(){
+    public ResponseEntity<List<CustomerDto>> listCustomers(){
         return ResponseEntity.ok(customerService.listCustomers());
     }
 
     @GetMapping("/{customerId}")
-    public ResponseEntity<Customer> getCustomerById(@PathVariable("customerId") UUID customerId) {
+    public ResponseEntity<CustomerDto> getCustomerById(@PathVariable("customerId") UUID customerId) {
         return ResponseEntity.ok(customerService.getCustomerById(customerId));
     }
 
