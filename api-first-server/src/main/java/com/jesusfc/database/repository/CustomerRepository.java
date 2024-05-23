@@ -1,8 +1,10 @@
 package com.jesusfc.database.repository;
 
 
+import com.jesusfc.database.entity.CustomerEntity;
 import com.jesusfc.model.CustomerDto;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.UUID;
 
@@ -11,5 +13,6 @@ import java.util.UUID;
  * jesus.fdez.caraballo@gmail.com
  * Created on may - 2024
  */
-public interface CustomerRepository extends CrudRepository<CustomerDto, UUID> {
+@Repository
+public interface CustomerRepository extends JpaRepository<CustomerEntity, UUID> {
 }

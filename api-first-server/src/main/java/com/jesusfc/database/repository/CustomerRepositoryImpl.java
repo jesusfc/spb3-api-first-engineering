@@ -16,9 +16,12 @@ import java.util.UUID;
  * jesus.fdez.caraballo@gmail.com
  * Created on may - 2024
  */
-@Repository
-public class CustomerRepositoryImpl implements CustomerRepository {
 
+//implements CustomerRepository
+
+//@Repository
+public class CustomerRepositoryImpl {
+/*
     private final Map<UUID, CustomerDto> entityMap = new HashMap<>();
 
     @Override
@@ -49,20 +52,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
 
         if (!CollectionUtils.isEmpty(entity.getPaymentMethods())) {
-            /*
-            PaymentMethod paymentMethod = new PaymentMethod();
-            paymentMethod.paymentMethods(entity.getPaymentMethods()
-                    .stream()
-                    .map(paymentMethod -> PaymentMethod.builder()
-                            .id(UUID.randomUUID())
-                            .cardNumber(paymentMethod.getCardNumber())
-                            .expiryMonth(paymentMethod.getExpiryMonth())
-                            .expiryYear(paymentMethod.getExpiryYear())
-                            .build())
-                    .collect(Collectors.toList()));
 
-            CustomerDto.setPaymentMethod(paymentMethod);
-            */
         }
 
         CustomerDto.setEmail(entity.getEmail());
@@ -129,4 +119,5 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     public void deleteAll() {
 
     }
+    */
 }
