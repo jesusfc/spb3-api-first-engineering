@@ -1,13 +1,14 @@
 package com.jesusfc.services;
 
+import com.jesusfc.database.entity.CustomerEntity;
 import com.jesusfc.database.repository.CustomerRepository;
+import com.jesusfc.mappers.CustomerMapper;
 import com.jesusfc.model.CustomerDto;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
-import java.util.stream.StreamSupport;
 
 /**
  * Author Jesús Fdez. Caraballo
@@ -19,15 +20,17 @@ import java.util.stream.StreamSupport;
 public class CustomerServiceImpl implements CustomerService {
 
     private final CustomerRepository customerRepository;
+    private final CustomerMapper customerMapper;
 
     @Override
     public List<CustomerDto> listCustomers() {
-        return StreamSupport.stream(customerRepository.findAll().spliterator(), false)
-                .toList();
+        List<CustomerEntity> all = customerRepository.findAll();
+        return all.stream().map(customerMapper::customerEntityToCustomerDto).toList();
     }
 
     @Override
     public CustomerDto getCustomerById(UUID customerId) {
-        return customerRepository.findById(customerId).orElseThrow();
+        CustomerEntity customerEntity = customerRepository.findById(customerId).orElseThrow();
+        return customerMapper.customerEntityToCustomerDto(customerEntity);
     }
 }

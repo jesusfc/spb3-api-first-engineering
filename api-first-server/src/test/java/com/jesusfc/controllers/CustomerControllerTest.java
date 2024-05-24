@@ -1,6 +1,6 @@
 package com.jesusfc.controllers;
 
-import com.jesusfc.model.CustomerDto;
+import com.jesusfc.database.entity.CustomerEntity;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -24,7 +24,7 @@ class CustomerControllerTest extends BaseTest {
     @Test
     void testGetCustomerById() throws Exception {
 
-        CustomerDto testCustomer = customerRepository.findAll().iterator().next();
+        CustomerEntity testCustomer = customerRepository.findAll().iterator().next();
 
         assert testCustomer.getId() != null;
         mockMvc.perform(get(CustomerController.BASE_URL + "/{customerId}", testCustomer.getId())

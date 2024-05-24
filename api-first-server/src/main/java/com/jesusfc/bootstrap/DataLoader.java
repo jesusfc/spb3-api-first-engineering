@@ -1,6 +1,7 @@
 package com.jesusfc.bootstrap;
 
 import com.jesusfc.database.repository.CustomerRepository;
+import com.jesusfc.mappers.CustomerMapper;
 import com.jesusfc.model.AddressDto;
 import com.jesusfc.model.CustomerDto;
 import com.jesusfc.model.NameDto;
@@ -20,6 +21,7 @@ import org.springframework.stereotype.Component;
 public class DataLoader implements CommandLineRunner {
 
     private final CustomerRepository customerRepository;
+    private final CustomerMapper customerMapper;
 
     @Override
     public void run(String... args) throws Exception {
@@ -38,7 +40,7 @@ public class DataLoader implements CommandLineRunner {
         customer.setBillingAddress(address);
         customer.setShipToAddress(address);
 
-        customerRepository.save(customer);
+        customerRepository.save(customerMapper.customerDtoToCustomerEntity(customer));
 
         CustomerDto customer2 = new CustomerDto();
         NameDto customerName2 = new NameDto();
@@ -52,11 +54,14 @@ public class DataLoader implements CommandLineRunner {
         customer2.setBillingAddress(address2);
         customer2.setShipToAddress(address2);
 
-        customerRepository.save(customer2);
+        customerRepository.save(customerMapper.customerDtoToCustomerEntity(customer2));
 
+        /*
         for (CustomerDto customer1 : customerRepository.findAll()) {
             log.info(String.valueOf(customer1));
         }
+
+         */
 
 
     }

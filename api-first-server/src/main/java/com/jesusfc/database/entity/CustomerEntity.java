@@ -1,6 +1,5 @@
 package com.jesusfc.database.entity;
 
-import com.jesusfc.model.AddressDto;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.JdbcTypeCode;
@@ -30,10 +29,10 @@ public class CustomerEntity {
     @Embedded
     private Name name;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private AddressEntity shipToAddress;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private AddressEntity billingAddress;
 
     private String email;
