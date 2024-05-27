@@ -1,5 +1,6 @@
 package com.jesusfc.bootstrap;
 
+import com.jesusfc.database.entity.CustomerEntity;
 import com.jesusfc.database.repository.CustomerRepository;
 import com.jesusfc.mappers.CustomerMapper;
 import com.jesusfc.model.AddressDto;
@@ -9,6 +10,8 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 /**
  * Author Jesús Fdez. Caraballo
@@ -56,13 +59,9 @@ public class DataLoader implements CommandLineRunner {
 
         customerRepository.save(customerMapper.customerDtoToCustomerEntity(customer2));
 
-        /*
-        for (CustomerDto customer1 : customerRepository.findAll()) {
-            log.info(String.valueOf(customer1));
-        }
 
-         */
-
+        List<CustomerEntity> all = customerRepository.findAll();
+        all.forEach(cus -> System.out.println(cus.getName().getFirstName()));
 
     }
 }

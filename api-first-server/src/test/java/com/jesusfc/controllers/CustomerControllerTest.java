@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 
+import java.util.UUID;
+
 import static org.hamcrest.Matchers.greaterThan;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -19,6 +21,16 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  */
 @SpringBootTest
 class CustomerControllerTest extends BaseTest {
+
+
+    @DisplayName("Get by Id is NOT found")
+    @Test
+    void testGetCustomerByIdNotFound() throws Exception {
+
+        mockMvc.perform(get(CustomerController.BASE_URL + "/{customerId}", UUID.randomUUID().toString())
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound());
+    }
 
     @DisplayName("Get by Id")
     @Test
